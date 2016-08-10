@@ -1,33 +1,49 @@
-﻿<!DOCTYPE html>
+﻿{% extends "layout.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Create a new question</title>
-    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-    <script src="/static/scripts/modernizr-2.6.2.js"></script>
-</head>
-<body class="well">
-    <h2 class="heading">Create a new question</h2>
+{% block content %}
+
+<body class="container">
+    <h2>Create a new question</h2>
     <form method="post">
-        <div class="col-md-3">
-            <div class="">
-                <label for="title">Title</label>
-                <input name="title" type="text"/>
-            </div>
+        <div class="container">
+            <table>
+                <tr>
+                    <td>
+                        <label for="title">Title</label>
+                    </td>
+                    </tr>
+                <tr>
+                    <td>
+                        <input name="title" type="text" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="question">Question</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="question" type="text" required style="width: 200px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="answer">Answer</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="answer" type="text" required style="width: 200px"/>
+                    </td>
+                </tr>
+            </table>
             <div>
-                <label for="question">Question</label>
-                <input name="question" type="text"/>
-            </div>
-            <div>
-                <label for="answer">Answer</label>
-                <input name="answer" type="text"/>
-            </div>
-            <div>
-                <button type="submit">Submit Question</button>
+                <br />
+                <button type="submit" class="btn-default">Submit Question</button>
             </div>
         </div>
     </form>
 </body>
-</html>
+
+{% endblock %}

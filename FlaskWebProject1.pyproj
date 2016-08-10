@@ -75,8 +75,8 @@
     <Content Include="FlaskWebProject1\static\scripts\_references.js" />
     <Content Include="FlaskWebProject1\templates\about.html" />
     <Content Include="FlaskWebProject1\templates\contact.html" />
-    <Content Include="FlaskWebProject1\templates\index.html" />
-    <Content Include="FlaskWebProject1\templates\layout.html" />
+    <Content Include="FlaskWebProject1\templates\Index.html" />
+    <Content Include="FlaskWebProject1\templates\Layout.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

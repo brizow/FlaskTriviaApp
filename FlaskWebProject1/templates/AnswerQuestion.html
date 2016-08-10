@@ -1,20 +1,18 @@
-﻿<!DOCTYPE html>
+﻿{% extends "layout.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Answer question</title>
-</head>
-<body>
-    <h2>Question: </h2>
+{% block content %}
+
+<body class="container">
+    <h2>Answer Question: </h2>
     <form method="post">
         <div>
-            <label for="answer">Answer: {{ question }}</label> <!--jinja syntax for variable-->
+            <label for="question">The question is: {{ question }}</label> <!--jinja syntax for variable-->
             <input type="text" name="submittedAnswer" />
         </div>
         <div>
-            <button type="submit">Submit Answer</button>
+            <br />
+            <button type="submit" class="btn-submit">Submit Answer</button>
         </div>
     </form>
 </body>
-</html>
+{% endblock %}

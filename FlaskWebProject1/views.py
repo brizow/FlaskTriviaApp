@@ -12,10 +12,15 @@ r=redis.StrictRedis(host="localhost", port=6379, db=0, charset="utf-8", decode_r
 # - 8 bit character set, decode the responses to a string for us.
 #r=redis.StrictRedis() -this works for all the defaults as well.
 
+#use a global variable for the year
+year=datetime.now().year
+
+#/ or /home
 @app.route("/")
-def hello():
-    createLink = "<a href=" + url_for("create") + ">Create a question</a>"
-    return "<html><head><title>Hello, world!</title></head><body>" + createLink + "</body></html>"
+@app.route("/home")
+def home():
+    return render_template("Index.html", title="Home Page", year=year)
+    #createLink = "<a href=" + url_for("create") + ">Create a question</a>"
 
 #server/create
 @app.route("/create", methods=["GET", "POST"]) #good practice to enable specific method calls
@@ -23,7 +28,7 @@ def create():
     #if you are posting back
     if request.method == "GET":
         #send user the form
-        return render_template("CreateQuestion.html")
+        return render_template("CreateQuestion.html", title="Create a question", year=year)
     #if you are posting
     elif request.method == "POST":
         #read form data and save it    
@@ -37,7 +42,7 @@ def create():
         r.set(title + ":answer", answer)
 
         #return the html template
-        return render_template("CreatedQuestion.html", question = question) #first question, new varible. The second question is pulling from the question variable in the elif
+        return render_template("CreatedQuestion.html", question = question, title="Thanks!", year=year) #first question, new varible. The second question is pulling from the question variable in the elif
     else:
         #just in case
         return "<h2>Invalid Request</h2>"
@@ -46,53 +51,27 @@ def create():
 @app.route("/question/<title>", methods=["GET", "POST"])
 def question(title):
     if request.method == "GET":
-        #send user the form
+        #send user the form    
         #fill the question variable with data from datastore
         question = r.get(title + ":question")
-        return render_template("AnswerQuestion.html", question = question)
-
+        return render_template("AnswerQuestion.html", question = question, title="Answer Question", year=year)
     elif request.method == "POST":
         #user has attmepted an answer. Check if correct
         submittedAnswer = request.form["submittedAnswer"] #did fail here - we didn't have our variable name correct on the HTML side.
         #read answer from datastore
         answer = r.get(title + ":answer")
-
         if submittedAnswer == answer:
-            return render_template("Correct.html")
+            return render_template("Correct.html", title="Good job!", year=year)
         else:
-            return render_template("Incorrect.html", submittedAnswer, answer = answer)
-
-    else:
+            return render_template("Incorrect.html", submittedAnswer = submittedAnswer, answer = answer, title="Oh noes!", year=year)    
+    else: 
         return "<h2>Invalid Request</h2>"
 
+#server/answer
+@app.route("/answer")
+def answer():
+    return ""
 
-    
-#@app.route('/')
-#@app.route('/home')
-#def home():
-#    """Renders the home page."""
-#    return render_template(
-#        'index.html',
-#        title='Home Page',
-#        year=datetime.now().year,
-#    )
+    #print(allquestions)
+    #return "<html><head><title>Hello, world!</title></head><body>Empty Route</body></html>"
 
-#@app.route('/contact')
-#def contact():
-#    """Renders the contact page."""
-#    return render_template(
-#        'contact.html',
-#        title='Contact',
-#        year=datetime.now().year,
-#        message='Your contact page.'
-#    )
-
-#@app.route('/about')
-#def about():
-#    """Renders the about page."""
-#    return render_template(
-#        'about.html',
-#        title='About',
-#        year=datetime.now().year,
-#        message='Your application description page.'
-#    )

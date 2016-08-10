@@ -1,0 +1,13 @@
+C:\Sites\PythonTriviaApp\bin\Microsoft.PythonTools.WebRole.dll
+C:\Sites\PythonTriviaApp\obj\Debug\attach_server.py
+C:\Sites\PythonTriviaApp\obj\Debug\visualstudio_py_debugger.py
+C:\Sites\PythonTriviaApp\obj\Debug\visualstudio_py_repl.py
+C:\Sites\PythonTriviaApp\obj\Debug\visualstudio_py_util.py
+C:\Sites\PythonTriviaApp\obj\Debug\__init__.py
+C:\Sites\PythonTriviaApp\obj\Debug\__main__.py
+C:\Sites\PythonTriviaApp\bin\AzureSetup.cfg
+C:\Sites\PythonTriviaApp\bin\Microsoft.PythonTools.AzureSetup.exe
+C:\Sites\PythonTriviaApp\bin\Microsoft.PythonTools.AzureSetup.exe.config
+C:\Sites\PythonTriviaApp\bin\wfastcgi.py
+C:\Sites\PythonTriviaApp\obj\Debug\web.config
+C:\Sites\PythonTriviaApp\obj\Debug\web.debug.config
